@@ -1,0 +1,20 @@
+name: Harjoitus 3.3
+on: 
+  issues:
+    types: opened
+permissions:
+  contents: write
+jobs:
+  repo-test:
+    runs-on: ubuntu-latest
+    steps:
+      # Haetaan repon koodit
+      - uses: actions/checkout@v7
+      - name: Check file
+      # Lisätään issuen title ja asssignee README-tiedostoon.
+        run: |  
+          TITLE=${{github.event.issue.title}}
+          ASSIGNEE=${{github.event.issue.assignee.login}}
+          echo "$TITLE : $ASSIGNEE"
+          
+          
