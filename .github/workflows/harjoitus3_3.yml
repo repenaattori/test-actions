@@ -2,22 +2,37 @@ name: Harjoitus 3.3
 on: 
   issues:
     types: opened
+  issue_comment:
+    types: created
+    
 permissions:
   contents: write
+
 jobs:
   repo-test:
     runs-on: ubuntu-latest
     steps:
       # Haetaan repon koodit
       - uses: actions/checkout@v7
-      - name: Write issue
-      # Lisätään issuen title ja asssignee README-tiedostoon.
+      - name: Write opened issue
+      # Lisätään avatun issuen title ja assignee README-tiedostoon.
+      # Suoritetaan vain, jos kysesssä issue event
+        if: ${{github.event_name == 'issues'}}
         run: |  
           TITLE="${{github.event.issue.title}}"
           ASSIGNEE="${{github.event.issue.assignee.login}}"
           echo "Title: $TITLE  Assignee: $ASSIGNEE"
           echo "<br>$TITLE : $ASSIGNEE" >> README.md
+      - name: Write issue comment
+      # Lisätään avatun issuen title ja asssignee README-tiedostoon.
+      # Suoritetaan vain, jos kysesssä issue event
+        if: ${{github.event_name == 'issue_comment'}}
+        run: |  
+          MSG="${{github.event.comment.body}}"
+          SENDER="${{github.event.sender}}"
+          echo "Commentator: $SENDER  Message: $MSG"
       - name: Push into the repo
+        if: ${{github.event_name == 'issues'}}
         run: |
           git config --global user.name 'repenaattori'
           git config --global user.email 'reimarii@oamk.fi'
