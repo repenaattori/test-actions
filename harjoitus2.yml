@@ -1,0 +1,22 @@
+name: Repo Info
+on: workflow_dispatch
+
+jobs:
+  repo-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0  # Haetaan kaikki commitit
+          fetch-tags: 'true' # Haetaan myös tagit
+      - name: Commands
+        run: |
+          touch commits.txt
+          git log --oneline > commits.txt  # Kirjoitetaan commitit tiedostoon 
+      - name: Print info
+        run: cat commits.txt
+      - name: Tag print
+        run: |   # Haetaan tagint koodit ja tulostetaan README
+          git checkout 1.0
+          cat README.md
+          
