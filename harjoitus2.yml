@@ -5,18 +5,22 @@ jobs:
   repo-test:
     runs-on: ubuntu-latest
     steps:
+      # Haetaan repon koodit kaikilla commiteilla ja tageilla.
       - uses: actions/checkout@v7
         with:
-          fetch-depth: 0  # Haetaan kaikki commitit
-          fetch-tags: 'true' # Haetaan myös tagit
+          fetch-depth: 0  
+          fetch-tags: 'true'
+      # Kirjoitetaan commitit tiedostoon
       - name: Commands
-        run: |
+        run: |  
           touch commits.txt
-          git log --oneline > commits.txt  # Kirjoitetaan commitit tiedostoon 
+          git log --oneline > commits.txt   
+      # Tulostetaan edellä luotu tiedosto
       - name: Print info
         run: cat commits.txt
+      # Haetaan tagin koodit ja tulostetaan README
       - name: Tag print
-        run: |   # Haetaan tagint koodit ja tulostetaan README
+        run: |   
           git checkout 1.0
           cat README.md
           
