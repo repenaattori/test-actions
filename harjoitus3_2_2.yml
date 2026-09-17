@@ -1,0 +1,18 @@
+name: Harjoitus 3.2.2
+on: push
+permissions:
+  contents: write
+env:
+  MY_KEYWORD: AuthorStamp
+jobs:
+  repo-test:
+    runs-on: ubuntu-latest
+    steps:
+      # Haetaan repon koodit
+      - uses: actions/checkout@v7
+      # Kirjoitetaan rivi tiedostoon. Printf osaa käsitellä rivinvaihdon (toisin kiuin echo)
+      - name: Write line to file
+        run: |  
+          if [ ! -f counter.txt ]; then echo "File found" fi
+          
+          

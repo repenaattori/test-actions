@@ -10,11 +10,11 @@ jobs:
     steps:
       # Haetaan repon koodit
       - uses: actions/checkout@v7
-      # Kirjoitetaan rivi tiedostoon. Printf osaa käsitellä rivinvaihdon (toisin kiuin echo)
+      # Kirjoitetaan rivi tiedostoon. Printf osaa käsitellä rivinvaihdon (toisin kuin echo)
       - name: Write line to file
         run: |  
           printf "$MY_KEYWORD: Push implemented\n" >> log.txt
-      # Tulostetaan edellä luotu tiedosto
+      # Pushataan tiedosto repoon
       - name: Push into the repo
         run: |
           git config --global user.name 'repenaattori'
