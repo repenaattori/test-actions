@@ -21,7 +21,7 @@ jobs:
         run: |
           git config --global user.name 'repenaattori'
           git config --global user.email 'reimarii@oamk.fi'
-          git add log.txt
+          git add README.md
           git commit -m 'Issue information into the README'
           git push
         
