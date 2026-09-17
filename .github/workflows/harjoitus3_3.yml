@@ -15,6 +15,15 @@ jobs:
         run: |  
           TITLE="${{github.event.issue.title}}"
           ASSIGNEE="${{github.event.issue.assignee.login}}"
-          echo "$TITLE : $ASSIGNEE"
+          echo "Title: $TITLE  Assignee: $ASSIGNEE"
+          echo "<br>$TITLE : $ASSIGNEE" >> README.md
+      - name: Push into the repo
+        run: |
+          git config --global user.name 'repenaattori'
+          git config --global user.email 'reimarii@oamk.fi'
+          git add log.txt
+          git commit -m 'Issue information into the README'
+          git push
+        
           
           
