@@ -24,17 +24,17 @@ jobs:
           ASSIGNEE="${{github.event.issue.assignee.login}}"
           echo "Title: $TITLE  Assignee: $ASSIGNEE"
           echo "<br>$TITLE : $ASSIGNEE" >> README.md
-      - name: Write issue comment
       # Tulostetaan issue kommentti ja sen tekijä
       # Linkki luodaan md-tiedoston syntaksilla (teksti)[url]
       # Suoritetaan vain, jos kysesssä issue_comment event
+      - name: Write issue comment
         if: ${{github.event_name == 'issue_comment'}}
         run: |  
           MSG="${{github.event.comment.body}}"
           SENDER="${{github.event.sender.login}}"
           echo "Commentator: $SENDER  Message: $MSG"
           echo "<br>Issue commented: [Open the issue here](${{github.event.issue.html_url}})" >> README.md
-      # Lopuiksi commitoidaan REAME muutokset
+      # Lopuiksi commitoidaan README muutokset
       - name: Git config
         run: |
           git config --global user.name 'repenaattori'
