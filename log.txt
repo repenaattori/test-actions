@@ -1,2 +1,0 @@
-AuthorStamp: Push implemented
-AuthorStamp: Push implemented
