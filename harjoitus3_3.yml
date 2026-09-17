@@ -1,4 +1,5 @@
 name: Harjoitus 3.3
+# Reagoi sekä issuen luontiin että kommentointiin.
 on: 
   issues:
     types: opened
