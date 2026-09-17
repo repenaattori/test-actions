@@ -29,8 +29,7 @@ jobs:
         if: ${{github.event_name == 'issue_comment'}}
         run: |  
           MSG="${{github.event.comment.body}}"
-          SENDER="${{github.event.sender}}"
-          echo ${{toJson(github.event.sender)}}
+          SENDER="${{github.event.sender.login}}"
           echo "Commentator: $SENDER  Message: $MSG"
       - name: Push into the repo
         if: ${{github.event_name == 'issues'}}
