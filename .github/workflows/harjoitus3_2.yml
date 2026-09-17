@@ -1,0 +1,26 @@
+name: Harjoitus 3.2
+on: push
+permissions:
+  contents: write
+env:
+  MY_KEYWORD: AuthorStamp
+jobs:
+  repo-test:
+    runs-on: ubuntu-latest
+    steps:
+      # Haetaan repon koodit
+      - uses: actions/checkout@v7
+      # Kirjoitetaan rivi tiedostoon. Printf osaa käsitellä rivinvaihdon (toisin kiuin echo)
+      - name: Write line to file
+        run: |  
+          printf "$MY_KEYWORD: Push implemented\n" >> log.txt
+      # Tulostetaan edellä luotu tiedosto
+      - name: Push into the repo
+        run: |
+          git config --global user.name 'repenaattori'
+          git config --global user.email 'reimarii@oamk.fi'
+          git add log.txt
+          git commit -m 'Added row into file'
+          git push
+
+          
