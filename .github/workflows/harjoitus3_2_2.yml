@@ -10,11 +10,23 @@ jobs:
     steps:
       # Haetaan repon koodit
       - uses: actions/checkout@v7
-      # Kirjoitetaan rivi tiedostoon. Printf osaa käsitellä rivinvaihdon (toisin kiuin echo)
-      - name: Write line to file
+      - name: Check file
+      # Jos ei tiedostoa vielä ole, kirjoitetaan sinne aluksi 0
         run: |  
-          if [ -f counter.txt ]; then 
-            echo "File found" 
+          if [ ! -f counter.txt ]; then 
+            echo "0" > counter.txt
           fi
+      # Päivitetään counter ja viedään muutos repoon
+      - name: Update counter
+        run: |
+          COUNT=$(cat counter.txt)
+          COUNT=$((COUNT+1))
+          echo "$COUNT" > counter.txt
+          git config --global user.name 'repenaattori'
+          git config --global user.email 'reimarii@oamk.fi'
+          git add counter.txt
+          git commit -m 'Push counter update'
+          git push
+
           
           
