@@ -10,10 +10,10 @@ jobs:
     steps:
       # Haetaan repon koodit
       - uses: actions/checkout@v7
-      - name: Check file
       # Jos ei tiedostoa vielä ole, kirjoitetaan sinne aluksi 0
       # Tämä on bonus. Tiedoston voi myös käsin luoda repoon aluksi arvolla 0.
       ## If-lauseke on bash-sriptauksessa käytettävä ehto.
+      - name: Check file
         run: |  
           if [ ! -f counter.txt ]; then 
             echo "0" > counter.txt
