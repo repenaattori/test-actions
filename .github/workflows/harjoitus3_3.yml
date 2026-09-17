@@ -10,11 +10,11 @@ jobs:
     steps:
       # Haetaan repon koodit
       - uses: actions/checkout@v7
-      - name: Check file
+      - name: Write issue
       # Lisätään issuen title ja asssignee README-tiedostoon.
         run: |  
-          TITLE=${{github.event.issue.title}}
-          ASSIGNEE=${{github.event.issue.assignee.login}}
+          TITLE="${{github.event.issue.title}}"
+          ASSIGNEE="${{github.event.issue.assignee.login}}"
           echo "$TITLE : $ASSIGNEE"
           
           
