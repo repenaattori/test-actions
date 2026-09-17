@@ -1,0 +1,13 @@
+name: Harjoitus 1.1
+on: workflow_dispatch
+env:
+  APP_NAME: SportsApp
+  APP_VERSION: v1.0.2b
+jobs:
+  env-test:
+    runs-on: ubuntu-latest
+    # Env-muuttujien käyttö kahdella eri tavalla
+    steps:
+      - run: echo "You app name is $APP_NAME and version is $APP_VERSION"
+      - run: echo "You app name is ${{env.APP_NAME}} and version is ${{env.APP_VERSION}}"
+     
