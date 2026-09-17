@@ -15,9 +15,9 @@ jobs:
     steps:
       # Haetaan repon koodit
       - uses: actions/checkout@v7
-      - name: Write opened issue
       # Lisätään avatun issuen title ja assignee README-tiedostoon.
       # Suoritetaan vain, jos kysesssä issue event
+      - name: Write opened issue
         if: ${{github.event_name == 'issues'}}
         run: |  
           TITLE="${{github.event.issue.title}}"
