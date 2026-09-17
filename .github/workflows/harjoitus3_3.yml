@@ -32,7 +32,7 @@ jobs:
           MSG="${{github.event.comment.body}}"
           SENDER="${{github.event.sender.login}}"
           echo "Commentator: $SENDER  Message: $MSG"
-          echo "Issue commented: [Open the issue here](${{github.event.issue.html_url}})" >> README.md
+          echo "<br>Issue commented: [Open the issue here](${{github.event.issue.html_url}})" >> README.md
       # Lopuiksi commitoidaan REAME muutokset
       - name: Git config
         run: |
