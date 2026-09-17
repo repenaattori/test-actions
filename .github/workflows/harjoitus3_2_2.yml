@@ -13,7 +13,7 @@ jobs:
       # Kirjoitetaan rivi tiedostoon. Printf osaa käsitellä rivinvaihdon (toisin kiuin echo)
       - name: Write line to file
         run: |  
-          if [ ! -f counter.txt ]; then 
+          if [ -f counter.txt ]; then 
             echo "File found" 
           fi
           
